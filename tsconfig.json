@@ -1,5 +1,8 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "compilerOptions": {
+    "noEmit": true, // No genera archivos de salida
+    "skipLibCheck": true, // No verifica los archivos de las librerías
+    "strict": false, // Desactiva el modo estricto
+    "noImplicitAny": false, // Permite usar "any" implícitamente
+  }
 }

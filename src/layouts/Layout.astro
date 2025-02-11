@@ -1,14 +1,21 @@
+---
+import '/src/styles/global.css'
+import Footer from '/src/sections/Footer.astro'
+---
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Diva Store</title>
 	</head>
-	<body>
-		<slot />
+	<body >
+		<main class="mx-5 my-5">
+			<slot />
+		</main>
+		<Footer />
 	</body>
 </html>
 
