@@ -2,40 +2,45 @@
 import Layout from "../../layouts/Layout.astro";
 import { getProductos } from "../../lib/productos";
 
-const productos = await getProductos();
+
+
+let productos = await getProductos();
 ---
 
 <Layout title="Productos">
-  <h1 class="text-5xl text-center my-10 text-pink-500">Productos Disponibles</h1>
+  <h1 class="text-5xl text-center font-bold my-10 text-pink-400">Productos Disponibles</h1>
 
   <div
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
   >
+   
     {
-      productos.map(
-        (producto) => (
-          console.log(producto),
-          (
-            <div class="max-h-auto">
-              <a href={`/productos/${producto.slug}`}>
-                <img
-                  src={producto.images[0].src}
-                  alt={producto.name}
-                  class="w-80 h-80 object-cover hover:scale-95 hover:opacity-95 mx-auto"
-                />
-                <h2 class=" font-semibold text-pink-400 text-xl text-center mt-2 hover:opacity-90 hover:scale-105">
-                  {producto.name}
-                </h2>
-              </a>
-              <div class="flex flex-col items-center justify-center gap-2 my-2">
-                <p class="text-gray-500 text-center font-semibold">
-                  ${parseFloat(producto.price).toLocaleString("es-Es")}{" "}
-                </p>
-                <button class="bg-pink-400 text-white font-semibold py-2 px-5 rounded-md hover:opacity-70 hover:scale-105">
-                  <span>Ver Opciones</span>
-                </button>
+      productos && (
+        productos.map(
+          (producto) => (
+            
+            (
+              <div class="max-h-auto">
+                <a href={`/productos/${producto.slug}`}>
+                  <img
+                    src={producto.images[0].src}
+                    alt={producto.name}
+                    class="w-80 h-80 object-cover hover:scale-95 hover:opacity-95 mx-auto"
+                  />
+                  <h2 class=" font-semibold text-pink-400 text-xl text-center mt-2 hover:opacity-90 hover:scale-105">
+                    {producto.name}
+                  </h2>
+                </a>
+                <div class="flex flex-col items-center justify-center gap-2 my-2">
+                  <p class="text-gray-500 text-center font-semibold">
+                    ${parseFloat(producto.price).toLocaleString("es-Es")}{" "}
+                  </p>
+                  <button class="bg-pink-400 text-white font-semibold py-2 px-5 rounded-md hover:opacity-70 hover:scale-105">
+                    <span>Ver Opciones</span>
+                  </button>
+                </div>
               </div>
-            </div>
+            )
           )
         )
       )
